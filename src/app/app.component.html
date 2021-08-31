@@ -1,0 +1,41 @@
+<div>
+  <table>
+    <tr>
+      <th>Company</th>
+      <th>Contact</th>
+      <th>Country</th>
+      <th>Justification</th>
+      <th>Approve</th>
+      <th>Reject</th>
+      <th>Comments</th>
+      <th>button</th>
+    </tr>
+    <tr *ngFor="let x of Data;let i = index">
+      <td>{{x.Company}}{{i}}</td>
+      <td>{{x.Contact}}</td>
+      <td>{{x.Country}}</td>
+      <td>
+        <p>
+          <span *ngIf ="justi[i]">{{x.Justification | slice: 0:20}}</span>
+          <span *ngIf ="!justi[i]">{{x.Justification}}</span>
+          <a (click)="justi[i] = !justi[i]" href="javascript:void(0);">...read
+            {{justi[i] ? 'more' : 'less'}}</a>
+        </p>
+
+      </td>
+      <td><input type="radio"  value="Approve" [checked] = 'approveFlag[i]'  name="option-{{i}}"  (change)="submitDisabled()" [(ngModel)]="status[i]"/>
+      </td>
+      <td><input type="radio"  value="Reject" [checked] = 'rejectFlag[i]' name="option-{{i}}" (change)="callAll()" [(ngModel)]="status[i]"/>
+      </td>
+      <td><textarea  [(ngModel)] = "textarea[i]"></textarea>
+
+      </td>
+      <td><button (click)="Regenerate(i)">Regenerate</button></td>
+    </tr>
+  </table>
+
+  <button (click)="approve(Data.length)">Approve all</button>
+  <button (click)="refresh(Data.length)">Refresh</button>
+  <button (click)='reject(Data.length)'>Reject All</button>
+  <button (click)='submit()' [disabled] = "disabledFlag">submit</button>
+</div>
