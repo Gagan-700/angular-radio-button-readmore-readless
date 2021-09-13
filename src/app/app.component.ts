@@ -23,12 +23,13 @@ export class AppComponent {
     this.Data = [
       { Company: 'Google', Contact: 'Raju', Country: 'US',Justification:'hi there this is a test env and we whant your' },
       { Company: 'Apple', Contact: 'Babu bhaiya', Country: 'UK',Justification:'2 hi there this is a test env and we whant your' },
-      { Company: 'Amazon', Contact: 'Shyam', Country: 'IN',Justification:' 3 hi there this is a test env and we whant your' }
+      { Company: 'Amazon', Contact: 'Shyam', Country: 'IN',Justification:' 3 hi there this is a test env and we whant your' },
+      { Company: 'Amazon', Contact: 'Shyam', Country: 'IN',Justification:' 4 hi there this is a test env and we whant your' }
     ];
     // this.sample = this.Data[0].Justification;
     //  this.xyz = this.sample.slice(0,20);
     this.justi = Array(this.Data.length).fill(true);
-    console.log(this.abc,"%%%")
+    
   }
   // justToggle(i){
   //   if(this.justi[i]){
@@ -60,6 +61,7 @@ export class AppComponent {
 
       resultData.push(obj);
     });
+    console.log(resultData, 'resultData');
     const statusToRemove = null;
 
 const filteredPeople = resultData.filter((item) => item.status !== statusToRemove);
